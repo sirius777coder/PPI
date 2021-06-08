@@ -11,13 +11,11 @@ PATH_HEAD = ./include
 NAME_LIB = Project
 
 all: $(PATH_SRC)/*.c
-        $(CC) -c ./source/*.c -I $(PATH_HEAD) 
-        ar -rsv $(PATH_LIB)/lib$(NAME_LIB).a *.o 
+	$(CC) -c ./source/*.c -I $(PATH_HEAD)
+	ar -rsv $(PATH_LIB)/lib$(NAME_LIB).a *.o 
 .PHONY: install
 install:
-        $(CC) -o $(PATH_BIN)/ppi $(PATH_BIN)/main.c -L $(PATH_LIB) -l$(NAME_LIB) -I $(PATH_HEAD) -g
+	$(CC) -o $(PATH_BIN)/PPI $(PATH_BIN)/main.c -L $(PATH_LIB) -l$(NAME_LIB) -I $(PATH_HEAD) -g
 .PHONY: clean
 clean:
-        rm -rf *.o
-~                                                                                                                                           
-~                                             
+	rm -rf *.o

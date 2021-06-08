@@ -15,5 +15,6 @@ typedef struct {
 
 void m2l(Graph *g,AL_graph *lg);
 void show_list(AL_graph *lg);
+void s1p(AL_graph *lg,int id);
 
 #endif //TEST_PPI_OPTIMIZATION_H

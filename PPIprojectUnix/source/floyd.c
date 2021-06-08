@@ -1,15 +1,15 @@
 #include "floyd.h"
 #include "PPI_new.h"
-void floyd(Graph *g,int n)//arr为有权无方向图邻接矩阵的拷贝（要对数组进行原地操作，不能直接传邻接矩阵，且infinity要设置大）；n为节点的数量；
+void floyd(Graph *g)//arr为有权无方向图邻接矩阵的拷贝（要对数组进行原地操作，不能直接传邻接矩阵，且infinity要设置大）；n为节点的数量；
 {
     int i=0,j=0,k=0;
     //k代表更新的次数，必须放在最外面
-    for (k=0;k<n;k++)
+    for (k=0;k<g->vexnum;k++)
     {
         //i,j代表矩阵的元素，可以交换位置
-        for (i=0;i<n;i++)
+        for (i=0;i<g->vexnum;i++)
         {
-            for (j=0;j<n;j++)
+            for (j=0;j<g->vexnum;j++)
             {
                 g->matrix[i][j]=g->matrix[i][j]<(g->matrix[i][k]+g->matrix[k][j])?g->matrix[i][j]:(g->matrix[i][k]+g->matrix[k][j]);
             }

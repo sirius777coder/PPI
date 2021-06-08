@@ -27,6 +27,26 @@ void m2l(Graph *g,AL_graph *lg)//代表给定一个adjacency matrix结构体，�
     }
 }
 
+void s1p(AL_graph *lg,int id)
+{
+    int i=0;
+    for (i=0;i<lg->vexnum;i++)
+    {
+        if (lg->adj_list[i]->id==id)
+        {
+            printf("%d->",id);
+            struct node *temp=lg->adj_list[i]->next;
+            while (temp!=NULL)
+            {
+                printf("%d",temp->id);
+                temp=temp->next;
+                if (temp!=NULL) printf("->");
+            }
+        }
+    }
+}
+
+
 void show_list(AL_graph *lg)//展示邻接表
 {
     int i=0;
@@ -43,3 +63,4 @@ void show_list(AL_graph *lg)//展示邻接表
         printf("\n");
     }
 }
+
