@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "dij_optimization.h"
 Graph g1; /* base adjacent matrix */
 Graph g2; /* copied adjacent matrix */
 AL_graph lg; /* adjacent list */
@@ -53,6 +54,15 @@ int main(int argc,char **argv)
         {
             printf("you only need to input -m\n");
             exit (3);
+        }
+        else if (!strcmp(argv[1],"-p")&&argc==4)
+        {
+            optimize(atoi(argv[2]),atoi(argv[3]));
+        }
+        else if (!strcmp(argv[1],"-p")&&argc!=4)
+        {
+            printf("wrong input numbers!\n");
+            exit(3);
         }
         else if (!strcmp(argv[1],"-l")&&argc==2)//输出酵母细胞的邻接表
         {
@@ -162,7 +172,17 @@ int main(int argc,char **argv)
             m2l(&g1,&lg);
             find0pro(&lg);
         }
-        else if (!strcmp(argv[1],"--0")&&argc!=4)
+        else if (!strcmp(argv[1],"-0")&&argc==2)//用户所给文件的中心蛋白
+        {
+            char *path1="../data/Sacer/finalize2.txt";
+            char *path2="../data/Sacer/tar.csv";
+            g1.vexnum= vertex_arr(&g1,path1);
+            vertex_arr(&g1,path1);
+            matrix(&g1,path2,g1.vexnum);
+            m2l(&g1,&lg);
+            find0pro(&lg);
+        }
+        else if (!strcmp(argv[1],"--0")&&argc!=2)
         {
             printf("wrong input!\n");
             exit(3);
